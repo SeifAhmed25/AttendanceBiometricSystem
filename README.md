@@ -32,12 +32,12 @@ I2C (Two Wire Interface Module)
 
 - The Finger Print will be connected to his ID in EEPROM.
 
-  ### Login Process 
-  - Employee should insert his ID first, and it will be searched with through EEPROM Data base.
+### Login Process 
+- Employee should insert his ID first, and it will be searched with through EEPROM Data base.
  
-  - If Employee ID is Found he will be ordered to enter his finger print and a match is carried.
+- If Employee ID is Found he will be ordered to enter his finger print and a match is carried.
  
-  - If a match is found, the system will register the login time using the RTC Module to get real time.
+- If a match is found, the system will register the login time using the RTC Module to get real time.
  
-  ## Project Machine State Design
-  
+## Project Machine State Design
+![Image Alt Text](https://ibb.co/QHJg1H1)  
