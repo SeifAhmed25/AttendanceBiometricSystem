@@ -40,5 +40,5 @@ I2C (Two Wire Interface Module)
 - If a match is found, the system will register the login time using the RTC Module to get real time.
  
 ## Project Machine State Design
-![Image Alt Text](D:\Study\Embedded\NTI\My-Github\AttendanceBiometricSystem\AttendanceBiometricSystem\IMAGESFingerPrintAttendanceSystemStateMachine\png)
+![FingerPrintAttendanceSystemStateMachine](https://github.com/SeifAhmed25/AttendanceBiometricSystem/assets/64741466/a77d0edd-609a-4526-9758-459b8a9ea47c)
 
