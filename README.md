@@ -40,4 +40,5 @@ I2C (Two Wire Interface Module)
 - If a match is found, the system will register the login time using the RTC Module to get real time.
  
 ## Project Machine State Design
-![Image Alt Text](https://ibb.co/QHJg1H1)  
+![Image Alt Text](D:\Study\Embedded\NTI\AVR\ENG AYA\AVR\FingerPrintAttendanceSystemStateMachine.png)
+
