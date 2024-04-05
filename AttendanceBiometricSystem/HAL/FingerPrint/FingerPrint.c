@@ -1,5 +1,5 @@
 
-#include "FingerPrint_Interface.h"  
+#include "FingerPrint_Interface.h" 
 /*A function to store the Acknowledgment Bytes*/
 u8 AckPack [12] = {0};
    /*
@@ -192,31 +192,37 @@ void FingerPS_SetNewFingerPrint (u16 address){
 	RepeatGenImag1:
 	FingerPS_genImg();
 	_delay_ms(100);
-	if (FingerPS_CheckAck() == false) goto RepeatGenImag1; /*WAIT FOR ACK*/ 
+	if (FingerPS_CheckAck() == false) goto RepeatGenImag1; /*WAIT FOR ACK*/
+	H_Lcd_Void_LCDWriteCharacter('*');
 	/*********************************************	FIRST CHARACTER FILE GENERATION	**************************************/
 	RepeatConvertFile1:
 	FingerPS_convertImg1CharFile();
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatConvertFile1; /*WAIT FOR ACK*/
+	H_Lcd_Void_LCDWriteCharacter('*');
 	/*********************************************		SECOND IMAGE GENERATION		**************************************/
 	RepeatGenImag2:
 	FingerPS_genImg();
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatGenImag2;/*WAIT FOR ACK*/
+	H_Lcd_Void_LCDWriteCharacter('*');
 	/*********************************************		SECONED CHAR FILE GENERATED		**********************************/
 	RepeatConvertFile2:
 	FingerPS_convertImg2CharFile();
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatConvertFile2;/*WAIT FOR ACK*/
+	H_Lcd_Void_LCDWriteCharacter('*');
 	/********************************************		Generate Tempelate			**********************************/
 	FingerPS_genTemplate();
 	_delay_ms(500);
 	if (FingerPS_CheckAck() == false) goto RepeatGenImag1;/*WAIT FOR ACK*/
+	H_Lcd_Void_LCDWriteCharacter('*');
 	/*******************************************		Tempelate Storing			***********************************/
 	RepeatStrTemp:
 	FingerPS_strTemplate(address);
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatStrTemp;/*WAIT FOR ACK*/
+H_Lcd_Void_LCDWriteCharacter('*');
 }
 u8 FingerPS_CheckOneToOneMatch(u16 address){
 	u8 match_result; 

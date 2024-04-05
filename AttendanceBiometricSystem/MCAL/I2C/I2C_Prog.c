@@ -6,7 +6,7 @@
  */ 
 #include "I2C_Private.h"
 #include "I2C_Interface.h" 
-#define F_CPU 16000000UL 
+#include "F_CPU_Interface.h"
 #define SCL_CLK 200000 /*Select SCL_CLK in Hz*/
 #define BITRATE(TWSR_REG)	((F_CPU/SCL_CLK)-16)/(2 * (1 << (TWSR_REG*2)))
 /*************************		INITIATE I2C	******************/

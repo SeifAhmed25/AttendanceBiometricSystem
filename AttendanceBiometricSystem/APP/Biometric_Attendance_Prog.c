@@ -51,11 +51,10 @@ void APP_Init(void)
 	H_Lcd_Void_LCDWriteString((u8*)"(*) : Attendance");
 	H_Lcd_Void_LCDGoTo(2,0);
 	H_Lcd_Void_LCDWriteString((u8*)"(#) : New Employee");
-	/*((key != CONFIRM_ATTENDANCE_BUTTON_PRESSED) || (key != NEW_ENROLLEMENT_BUTTON_PRESSED));*/ 
-	while (key == KEYPAD_RELEASED){
-		key = H_KeyPad_U8_KeyPadRead();
-	}
 	
+ 	while ((key != (NEW_ENROLLEMENT_BUTTON_PRESSED)) && (key != (CONFIRM_ATTENDANCE_BUTTON_PRESSED))){
+ 		key = H_KeyPad_U8_KeyPadRead();
+ 	}
 	switch(key)
 	{
 	case CONFIRM_ATTENDANCE_BUTTON_PRESSED:
@@ -97,7 +96,7 @@ APP_EmpID APP_GetID(void)
 	do
 	{
 		Temp_keyPressed = H_KeyPad_U8_KeyPadRead();/*get char reading from user via keypad*/
-		if(GOBACK_BUTTON_PRESSED == Temp_keyPressed)
+		if(GOBACK_BUTTON_PRESSED == Temp_keyPressed || MAIN_MENU_BUTTON_PRESSED == Temp_keyPressed)
 		{	/*if the user pressed the go-back button in the middle of the operation
 		 	  Ignore the inputs by overwriting the Copy_ID by 0xFF and break the loop*/
 			Copy_ID = GOBACK;
@@ -111,12 +110,10 @@ APP_EmpID APP_GetID(void)
 			H_Lcd_Void_LCDWriteNumber(Temp_keyPressed);/*display the number on the LCD for User interface*/
 
 			Copy_ID = ((Copy_ID * 10 ) + Temp_keyPressed) ;/*convert ID into u8 integer value*/
-
+			if(Copy_ID>MAX_ALLOWED_ID) Copy_ID = OUT_OF_RANGE_ID;
 		}
-	}while(ENTER_BUTTON_PRESSED != Temp_keyPressed);
-	if((Copy_ID>MAX_ALLOWED_ID)||(Copy_ID<MIN_ALLOWED_ID)){
-		Copy_ID=OUT_OF_RANGE_ID;
-	}
+	} while(ENTER_BUTTON_PRESSED != Temp_keyPressed);
+	
 	return Copy_ID;/*return the ID u8 integer value*/
 }
 
@@ -284,7 +281,7 @@ u8 APP_WarningHandler(APP_Warnings warningType){
 	* wait  for the go back key to get pressed
 	* then
 	* initial state */
-	u8 user_action=0;
+	u8 user_action = KEYPAD_RELEASED;
 	H_LED_Void_LedOn(LED_RED);
 	H_Lcd_Void_LCDClear();
 	H_Lcd_Void_LCDWriteString((u8*) "Warning:");
@@ -306,10 +303,8 @@ u8 APP_WarningHandler(APP_Warnings warningType){
 	}
 	H_Lcd_Void_LCDGoTo(2,0);
 	H_Lcd_Void_LCDWriteString((u8*) "C : Main Menu");
-	H_Lcd_Void_LCDGoTo(3,0);
-	H_Lcd_Void_LCDWriteString((u8*) "A : Back");
-	while((user_action!= GOBACK_BUTTON_PRESSED)||(user_action!= MAIN_MENU_BUTTON_PRESSED)){
-	user_action= H_KeyPad_U8_KeyPadRead();
+	while(user_action != MAIN_MENU_BUTTON_PRESSED){
+		user_action=H_KeyPad_U8_KeyPadRead();
 	}
 	H_LED_Void_LedOff(LED_RED);
 	return user_action;

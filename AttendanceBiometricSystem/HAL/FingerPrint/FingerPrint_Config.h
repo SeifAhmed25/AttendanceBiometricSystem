@@ -1,7 +1,10 @@
 #include "STD.h"
+#define F_CPU 16000000 
+#include "util\delay.h"
+
 #define HEADER_HIGH_BYTE 0XEF
 #define HEADER_LOW_BYTE 0X01
-#define F_CPU 16000000UL
+
 #define false 0
 #define true 1
 #define MATCHED 1 
