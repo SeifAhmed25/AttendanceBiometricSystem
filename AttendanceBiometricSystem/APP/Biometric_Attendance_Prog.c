@@ -175,7 +175,7 @@ void APP_SetNewID(APP_EmpID copy_ID)
 *************************************************************************/
 void APP_NewEnrollemtSuccessful(void){
 	H_Lcd_Void_LCDClear();
-	H_Lcd_Void_LCDWriteString((u8*) "New Enrollment successful");
+	H_Lcd_Void_LCDWriteString((u8*) "ENROLLMENT SUCCESS");
 	H_LED_Void_LedOn(LED_GRN);
 	_delay_ms(DISPLAY_FOR_5_SEC);
 	H_LED_Void_LedOff(LED_GRN);
@@ -298,10 +298,12 @@ u8 APP_WarningHandler(APP_Warnings warningType){
 		H_Lcd_Void_LCDWriteString((u8*) "ID NOT FOUND");
 	break;
 	case FINGERPRINT_NOT_FOUND:
-		H_Lcd_Void_LCDWriteString((u8*) "FINGERPRINT NOTFOUND");
+		H_Lcd_Void_LCDWriteString((u8*) "FINGERPRINT NOTFOUND"); 
+		H_Lcd_Void_LCDGoTo(2,0); 
+		H_Lcd_Void_LCDWriteString((u8*) "PLEASE TRY AGAIN"); 
 	break;
 	}
-	H_Lcd_Void_LCDGoTo(2,0);
+	H_Lcd_Void_LCDGoTo(3,0);
 	H_Lcd_Void_LCDWriteString((u8*) "C : Main Menu");
 	while(user_action != MAIN_MENU_BUTTON_PRESSED){
 		user_action=H_KeyPad_U8_KeyPadRead();

@@ -10,7 +10,8 @@
 
 #include "STD.h"
 #include "BitMath.h"
-#include "UART_Config.h"
+#include "UART_Config.h" 
+#include "F_CPU_Interface.h"
 #include "avr/interrupt.h"
 
 void UART_Init(void);

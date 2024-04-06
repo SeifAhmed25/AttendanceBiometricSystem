@@ -5,7 +5,7 @@
  * File Name: Main.c
  *
  * Description: This project aims mainly to check the attendance of employees in companies
- *              on time, there are two general cases:
+ *              on time. There are two general cases:
  *              1- A new employee shall set up his ID and FingerPrint for the first time.
  *              2- An employee that has already set up his ID and fingerPrint and needs to
  *                 confirm his attendance on a daily basis
@@ -17,26 +17,28 @@
 /*****************************************************************************
  *                            INCLUDED MODULES
  ******************************************************************************/
-#include "F_CPU_Interface.h"
+#include "MCAL\F_CPU\F_CPU_Interface.h"
 #include "HAL/EEPROM/EEPROM_Interfac.h"
 #include "HAL/KeyPad/Keypad_Interface.h"
 #include "HAL/LCD/LCD_Interface.h"
 #include "HAL/LED/LED_Interface.h"
 #include "HAL/RTC/RTC_Inter.h"
-#include "APP/Biometric_Attendance_Interface.h"
 #include "HAL/FingerPrint/FingerPrint_Interface.h"
+#include "APP/Biometric_Attendance_Interface.h"
 
-#define MAX_TRIALS              3
+
+#define MAX_TRIALS 3
 
 /*****************************************************************************
  *                            Global Variables Definition
  ******************************************************************************/
 APP_CurrentState g_SystemState = INITIAL_STATE;
+u8 is_Finger_Match = 0;
 
 /*********************************************************************************
  *                                    MAIN
  *********************************************************************************/
-void main(void)
+int main(void)
 {
     Date_And_Time Current_Date_And_Time = {35, 21, 2, 6, 28, 3, 24};
     //RTC_Set_Time(&Current_Date_And_Time);
@@ -45,21 +47,22 @@ void main(void)
     /* Initialization of the used modules in the MCAL layer */
     M_Void_I2C_Init();
     UART_Init();
-
+    UART_receiveByteAsynchCallBack(StoreAckBytes);
+    sei();
     /* Initialization of the used modules in the HAL layer */
     H_LED_Void_LedInit(LED_RED);
     H_LED_Void_LedInit(LED_GRN);
-
     H_KeyPad_Void_KeyPadInit();
     H_Lcd_Void_LCDInit();
     RTC_Init();
 
     u8 WrongFingerPrintCounter = 0;
+
     while (1)
     {
         /* Initial function
-         * Press '*' Attendance Confirmation
-         * Press '#' New Enrollment */
+         * Press '*' for Attendance Confirmation
+         * Press '#' for New Enrollment */
         if (g_SystemState == INITIAL_STATE)
         {
             APP_Init();
@@ -77,40 +80,40 @@ void main(void)
                 g_SystemState = APP_CheckIDPresence(EmpID);
                 if (g_SystemState == FOUND_ID)
                 {
-                    /* In case ID is found then ask for the fingerPrint scan */
+                    /* If ID is found, ask for the fingerprint scan */
                     APP_PutFingerToScan();
-                    _delay_ms(3000);
                     FingerPS_AuraLedConfig();
-                    do
+                    _delay_ms(3000);
+                    is_Finger_Match = FingerPS_CheckOneToOneMatch((u16)EmpID);
+
+                    if (MATCHED == is_Finger_Match)
                     {
-                        if (MATCHED == FingerPS_CheckOneToOneMatch((u16)EmpID))
+                        /* If the fingerprint matches the employee's saved fingerprint, show success message */
+                        APP_Confirm_Attendance_Success(EmpID, &Current_Date_And_Time);
+                        g_SystemState = INITIAL_STATE;
+                        WrongFingerPrintCounter = 0;
+                        break;
+                    }
+                    else if (NOTMATCHED == is_Finger_Match)
+                    {
+                        while ((is_Finger_Match == NOTMATCHED) && (WrongFingerPrintCounter < MAX_TRIALS))
                         {
-                            /* If the fingerprint matches the employee's fingerprint saved, LCD will show that the confirmation of attendance has been successful */
-                            APP_Confirm_Attendance_Success(EmpID, &Current_Date_And_Time);
-                            g_SystemState = INITIAL_STATE;
-                            WrongFingerPrintCounter = 0;
-                        }
-                        else if (NOTMATCHED == FingerPS_CheckOneToOneMatch((u16)EmpID))
-                        {
-                            /* If the fingerprint doesn't match the employee's fingerprint saved will try again for 3 times then a warning will be displayed */
                             WrongFingerPrintCounter++;
-                            if (WrongFingerPrintCounter == MAX_TRIALS)
-                            {
-                                if (APP_WarningHandler(FINGERPRINT_NOT_FOUND) == MAIN_MENU_BUTTON_PRESSED)
-                                {
-                                    /* Go back to the main menu to choose new enrollment */
-                                    g_SystemState = INITIAL_STATE;
-                                }
-                                else if (APP_WarningHandler(FINGERPRINT_NOT_FOUND) == GOBACK_BUTTON_PRESSED)
-                                {
-                                    /* Take one step back in the program and go back to confirm attendance */
-                                    g_SystemState = CONFIRM_ATTENDANCE_ENTER_ID;
-                                }
-                            }
+                            H_LED_Void_LedOn(LED_RED);
+                            H_Lcd_Void_LCDClear();
+                            H_Lcd_Void_LCDWriteString((u8*)"Warning:");
+                            H_Lcd_Void_LCDGoTo(1, 0);
+                            H_Lcd_Void_LCDWriteString((u8*)"FINGERPRINT NOTFOUND");
+                            H_Lcd_Void_LCDGoTo(2, 0);
+                            H_Lcd_Void_LCDWriteString((u8*)"PLEASE TRY AGAIN");
+                            _delay_ms(1000);
+                            FingerPS_AuraLedConfig();
+                            _delay_ms(2000);
+                            is_Finger_Match = FingerPS_CheckOneToOneMatch((u16)EmpID);
                         }
-                    } while (WrongFingerPrintCounter < MAX_TRIALS);
-                    /* Return the value of wrong fingerprint counter to 0 */
+                    }
                     WrongFingerPrintCounter = 0;
+                    g_SystemState = INITIAL_STATE;
                 }
                 else if (g_SystemState == NOTFOUND_ID)
                 {
@@ -118,11 +121,12 @@ void main(void)
                     {
                         /* Go back to the main menu to choose new enrollment */
                         g_SystemState = INITIAL_STATE;
-                    } 
-					else if (APP_WarningHandler(ID_NOT_FOUND) == GOBACK_BUTTON_PRESSED){
-						/* Go back to the Enter ID */
-						g_SystemState = CONFIRM_ATTENDANCE_ENTER_ID;
-					}
+                    }
+                    else if (APP_WarningHandler(ID_NOT_FOUND) == GOBACK_BUTTON_PRESSED)
+                    {
+                        /* Go back to the Enter ID */
+                        g_SystemState = CONFIRM_ATTENDANCE_ENTER_ID;
+                    }
                 }
             }
             break; /* End of confirm attendance case */
@@ -138,7 +142,7 @@ void main(void)
                 g_SystemState = APP_CheckIDPresence(EmpID);
                 if (g_SystemState == NOTFOUND_ID)
                 {
-                    /* If the ID inserted out of range, display on LCD warning that the ID is out of range */
+                    /* If the ID is out of range, display a warning on the LCD */
                     if (EmpID == OUT_OF_RANGE_ID)
                     {
                         if (APP_WarningHandler(OUT_OF_RANGE_ID) == MAIN_MENU_BUTTON_PRESSED)
@@ -149,16 +153,15 @@ void main(void)
                     }
                     else
                     {
-                        /* Show Put your finger to scan on the lcd */
+                        /* Prompt for finger scan */
                         APP_PutFingerToScan();
                         _delay_ms(4000);
                         FingerPS_AuraLedConfig();
-                        /* Save the new fingerprint of the new employee in the corresponding address in the fingerprint memory */
+                        /* Save the new fingerprint in memory */
                         FingerPS_SetNewFingerPrint((u16)EmpID);
-                        /* Write the New employee ID in the corresponding address in the EEPROM */
+                        /* Write the new employee ID to EEPROM */
                         APP_SetNewID(EmpID);
-                        /* Call LCD Display SUCCESS NEW ENROLLMENT
-                         * Press Go-back button to the main menu */
+                        /* Show success message */
                         APP_NewEnrollemtSuccessful();
                         g_SystemState = INITIAL_STATE;
                     }
@@ -172,7 +175,7 @@ void main(void)
                     }
                     else if (APP_WarningHandler(ALREADY_TAKEN_ID) == GOBACK_BUTTON_PRESSED)
                     {
-                        /* Take one step back in the program and go back to confirm attendance */
+                        /* Go back to set new ID */
                         g_SystemState = NEW_ENROLLMENT_SET_NEW_ID;
                     }
                 }
@@ -180,4 +183,5 @@ void main(void)
             break; /* End of New Enrollment */
         }
     }
+    return 0;
 }

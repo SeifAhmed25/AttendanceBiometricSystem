@@ -17,9 +17,11 @@
 #ifndef APP_BIOMETRIC_ATTENDANCE_INTERFACE_H_
 #define APP_BIOMETRIC_ATTENDANCE_INTERFACE_H_
 
+// #include "F_CPU_Interface.h"
 #include "../LIB/STD.h"
 #include "Biometric_Attendance_Types.h" 
-#include "RTC_Inter.h"
+#include "RTC_Inter.h" 
+#include "F_CPU_Interface.h"
 
 /*the ASCII values according to the Keypad buttons */
 #define CONFIRM_ATTENDANCE_BUTTON_PRESSED 	'*'

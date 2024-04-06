@@ -193,36 +193,30 @@ void FingerPS_SetNewFingerPrint (u16 address){
 	FingerPS_genImg();
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatGenImag1; /*WAIT FOR ACK*/
-	H_Lcd_Void_LCDWriteCharacter('*');
 	/*********************************************	FIRST CHARACTER FILE GENERATION	**************************************/
 	RepeatConvertFile1:
 	FingerPS_convertImg1CharFile();
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatConvertFile1; /*WAIT FOR ACK*/
-	H_Lcd_Void_LCDWriteCharacter('*');
 	/*********************************************		SECOND IMAGE GENERATION		**************************************/
 	RepeatGenImag2:
 	FingerPS_genImg();
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatGenImag2;/*WAIT FOR ACK*/
-	H_Lcd_Void_LCDWriteCharacter('*');
 	/*********************************************		SECONED CHAR FILE GENERATED		**********************************/
 	RepeatConvertFile2:
 	FingerPS_convertImg2CharFile();
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatConvertFile2;/*WAIT FOR ACK*/
-	H_Lcd_Void_LCDWriteCharacter('*');
 	/********************************************		Generate Tempelate			**********************************/
 	FingerPS_genTemplate();
 	_delay_ms(500);
 	if (FingerPS_CheckAck() == false) goto RepeatGenImag1;/*WAIT FOR ACK*/
-	H_Lcd_Void_LCDWriteCharacter('*');
 	/*******************************************		Tempelate Storing			***********************************/
 	RepeatStrTemp:
 	FingerPS_strTemplate(address);
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatStrTemp;/*WAIT FOR ACK*/
-H_Lcd_Void_LCDWriteCharacter('*');
 }
 u8 FingerPS_CheckOneToOneMatch(u16 address){
 	u8 match_result; 
@@ -231,24 +225,29 @@ u8 FingerPS_CheckOneToOneMatch(u16 address){
 	FingerPS_genImg();
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatCheckImagGen; /*WAIT FOR ACK*/
+	H_Lcd_Void_LCDWriteCharacter('*');
 	/******************************************			Generate char from Check Image	****************************************/
 	RepeatCharCheckFileGen:
 	FingerPS_convertImg1CharFile();
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatCharCheckFileGen; /*WAIT FOR ACK*/
+	H_Lcd_Void_LCDWriteCharacter('*');
 	/******************************************			Load Char in char file 2	***********************************/
 	RepeatLoadCharFile:
 	FingerPS_LoadCharFile(address);
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatLoadCharFile; /*Wait for ACK*/
+	H_Lcd_Void_LCDWriteCharacter('*');
 	/******************************************			CHECK MATCH				****************************************/
 	FingerPS_match();
 	_delay_ms(100); 
 	if (AckPack[9] == 0x00){
 		match_result = MATCHED;
+		H_Lcd_Void_LCDWriteCharacter('M');
 	}
 	else {
-		match_result = NOTMATCHED; 
+		match_result = NOTMATCHED;  
+		H_Lcd_Void_LCDWriteCharacter('N');
 	} 
 	return match_result; 
 }
