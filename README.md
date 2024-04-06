@@ -4,7 +4,7 @@
 
 ATmega32 Microcontroller 
 
-## Peripherals
+## Hardware Peripherals
 
 R503 Finger Print Module
 
@@ -13,6 +13,8 @@ DS1307 RTC Module
 M24C08 EEPROM Module 
 
 4*20 LCD Unit 
+
+4*4 Keypad unit
 
 ## MCAL (Micro Controller Abstraction Layer) 
 
@@ -40,5 +42,6 @@ I2C (Two Wire Interface Module)
 - If a match is found, the system will register the login time using the RTC Module to get real time.
  
 ## Project Machine State Design
+
 ![FingerPrintAttendanceSystemStateMachine](https://github.com/SeifAhmed25/AttendanceBiometricSystem/assets/64741466/a77d0edd-609a-4526-9758-459b8a9ea47c)
 
