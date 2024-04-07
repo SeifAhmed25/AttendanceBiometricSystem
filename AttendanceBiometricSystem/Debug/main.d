@@ -33,9 +33,8 @@ main.d main.o: .././main.c .././MCAL\F_CPU\F_CPU_Interface.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- ../HAL/LCD/LCD_Interface.h .././APP/Biometric_Attendance_Interface.h \
- .././APP/../LIB/STD.h .././APP/Biometric_Attendance_Types.h \
- ../HAL/RTC/RTC_Inter.h
+ .././APP/Biometric_Attendance_Interface.h .././APP/../LIB/STD.h \
+ .././APP/Biometric_Attendance_Types.h ../HAL/RTC/RTC_Inter.h
 
 .././MCAL\F_CPU\F_CPU_Interface.h:
 
@@ -126,8 +125,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
-
-../HAL/LCD/LCD_Interface.h:
 
 .././APP/Biometric_Attendance_Interface.h:
 

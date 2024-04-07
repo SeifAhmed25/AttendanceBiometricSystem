@@ -86,12 +86,6 @@ void FingerPS_convertImg2CharFile(){
 /* Combine information of character files from CharBuffer1 and CharBuffer2 and
  * generate a template which is stored back in both CharBuffer1 and CharBuffer2*/
 void FingerPS_genTemplate(){
-	/*
-	FingerP_send(PCK_ID_COMMAND_PACK,LENGTH_3BYTE);
-	UART_sendByte(GEN_TEMPLATE);
-	UART_sendByte((PCK_ID_COMMAND_PACK+LENGTH_3BYTE+GEN_TEMPLATE)>>ONE_BYTE_SHIFT);
-	UART_sendByte((PCK_ID_COMMAND_PACK+LENGTH_3BYTE+GEN_TEMPLATE)>>NO_BYTE_SHIFT);
-	*/
 	UART_sendByte(0xef);
 	UART_sendByte(0x01);
 	UART_sendByte(0xff);
@@ -149,8 +143,8 @@ void FingerPS_LoadCharFile(u16 address){
 	UART_sendByte(0x02); /*load in the char file 2*/
 	UART_sendByte(address>>ONE_BYTE_SHIFT);
 	UART_sendByte(address>>NO_BYTE_SHIFT);
-	UART_sendByte(0x00); 
-	UART_sendByte(0x14);
+	UART_sendByte((0x01+0x00+0x06+0x07+0x02+address)>>ONE_BYTE_SHIFT);
+	UART_sendByte((0x01+0x00+0x06+0x07+0x02+address)>>NO_BYTE_SHIFT);
 } 
 void FingerPS_match(){
 	UART_sendByte(0xef);
@@ -224,30 +218,25 @@ u8 FingerPS_CheckOneToOneMatch(u16 address){
 	RepeatCheckImagGen:
 	FingerPS_genImg();
 	_delay_ms(100);
-	if (FingerPS_CheckAck() == false) goto RepeatCheckImagGen; /*WAIT FOR ACK*/
-	H_Lcd_Void_LCDWriteCharacter('*');
+	if (FingerPS_CheckAck() == false) goto RepeatCheckImagGen; /*WAIT FOR ACK*/ 
 	/******************************************			Generate char from Check Image	****************************************/
 	RepeatCharCheckFileGen:
 	FingerPS_convertImg1CharFile();
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatCharCheckFileGen; /*WAIT FOR ACK*/
-	H_Lcd_Void_LCDWriteCharacter('*');
 	/******************************************			Load Char in char file 2	***********************************/
 	RepeatLoadCharFile:
 	FingerPS_LoadCharFile(address);
 	_delay_ms(100);
 	if (FingerPS_CheckAck() == false) goto RepeatLoadCharFile; /*Wait for ACK*/
-	H_Lcd_Void_LCDWriteCharacter('*');
 	/******************************************			CHECK MATCH				****************************************/
 	FingerPS_match();
 	_delay_ms(100); 
 	if (AckPack[9] == 0x00){
 		match_result = MATCHED;
-		H_Lcd_Void_LCDWriteCharacter('M');
 	}
 	else {
-		match_result = NOTMATCHED;  
-		H_Lcd_Void_LCDWriteCharacter('N');
+		match_result = NOTMATCHED; 
 	} 
 	return match_result; 
 }

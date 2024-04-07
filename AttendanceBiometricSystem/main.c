@@ -26,7 +26,6 @@
 #include "HAL/FingerPrint/FingerPrint_Interface.h"
 #include "APP/Biometric_Attendance_Interface.h"
 
-
 #define MAX_TRIALS 3
 
 /*****************************************************************************
@@ -40,7 +39,7 @@ u8 is_Finger_Match = 0;
  *********************************************************************************/
 int main(void)
 {
-    Date_And_Time Current_Date_And_Time = {35, 21, 2, 6, 28, 3, 24};
+    Date_And_Time Current_Date_And_Time = {0, 43, 12, 1, 7, 4, 24};
     //RTC_Set_Time(&Current_Date_And_Time);
     APP_EmpID EmpID = 0xFF;
 
@@ -56,90 +55,85 @@ int main(void)
     H_Lcd_Void_LCDInit();
     RTC_Init();
 
-    u8 WrongFingerPrintCounter = 0;
-
     while (1)
     {
         /* Initial function
          * Press '*' for Attendance Confirmation
-         * Press '#' for New Enrollment */
-        if (g_SystemState == INITIAL_STATE)
-        {
-            APP_Init();
-        }
-        switch (g_SystemState)
-        {
+         * Press '#' for New Enrollment */ 
+	switch (g_SystemState)
+     { 
+/**************************************************************************************************************************************
+ *																Initial State Condition												  *
+ **************************************************************************************************************************************/
+		case INITIAL_STATE:
+            APP_Init(); 
+			break; 
+/**************************************************************************************************************************************
+ *															   Confirm Attendance Enter ID											  * 
+ **************************************************************************************************************************************/ 						
         case CONFIRM_ATTENDANCE_ENTER_ID:
-            EmpID = APP_GetID();
+            EmpID = APP_GetID(); 
+			/*If the user pressed the Go back Button We go to the initial state*/
             if (EmpID == GOBACK)
             {
                 g_SystemState = INITIAL_STATE;
-            }
+            } 
+			/*If the user entered the Id, then we check if it is present*/
             else
             {
-                g_SystemState = APP_CheckIDPresence(EmpID);
+                g_SystemState = APP_CheckIDPresence(EmpID); 
+				/*If the ID Already Present in the Data Base then check the Finger Print*/
                 if (g_SystemState == FOUND_ID)
                 {
-                    /* If ID is found, ask for the fingerprint scan */
+                    /*If ID is found, ask for the fingerprint scan*/
                     APP_PutFingerToScan();
                     FingerPS_AuraLedConfig();
                     _delay_ms(3000);
-                    is_Finger_Match = FingerPS_CheckOneToOneMatch((u16)EmpID);
-
+                    is_Finger_Match = FingerPS_CheckOneToOneMatch((u16)EmpID); 
+					/*If the fingerprint matches the employee's saved fingerprint, show success message*/
                     if (MATCHED == is_Finger_Match)
                     {
-                        /* If the fingerprint matches the employee's saved fingerprint, show success message */
                         APP_Confirm_Attendance_Success(EmpID, &Current_Date_And_Time);
                         g_SystemState = INITIAL_STATE;
-                        WrongFingerPrintCounter = 0;
-                        break;
-                    }
-                    else if (NOTMATCHED == is_Finger_Match)
+                    } 
+					/*If the fingerprint does not match then,
+					  Turn on Red Led, Show Warning Message, wait for 3 sec delay time and go for Initial State*/
+                    else if (NOTMATCHED == is_Finger_Match) 
                     {
-                        while ((is_Finger_Match == NOTMATCHED) && (WrongFingerPrintCounter < MAX_TRIALS))
-                        {
-                            WrongFingerPrintCounter++;
-                            H_LED_Void_LedOn(LED_RED);
-                            H_Lcd_Void_LCDClear();
-                            H_Lcd_Void_LCDWriteString((u8*)"Warning:");
-                            H_Lcd_Void_LCDGoTo(1, 0);
-                            H_Lcd_Void_LCDWriteString((u8*)"FINGERPRINT NOTFOUND");
-                            H_Lcd_Void_LCDGoTo(2, 0);
-                            H_Lcd_Void_LCDWriteString((u8*)"PLEASE TRY AGAIN");
-                            _delay_ms(1000);
-                            FingerPS_AuraLedConfig();
-                            _delay_ms(2000);
-                            is_Finger_Match = FingerPS_CheckOneToOneMatch((u16)EmpID);
-                        }
+                        H_LED_Void_LedOn(LED_RED);
+                        H_Lcd_Void_LCDClear();
+                        H_Lcd_Void_LCDWriteString((u8*)"Warning:");
+                        H_Lcd_Void_LCDGoTo(1,0);
+                        H_Lcd_Void_LCDWriteString((u8*)"FINGERPRINT NOTFOUND");
+                        _delay_ms(3000);
+                        H_LED_Void_LedOff(LED_RED);
+                        g_SystemState = INITIAL_STATE;
                     }
-                    WrongFingerPrintCounter = 0;
-                    g_SystemState = INITIAL_STATE;
                 }
                 else if (g_SystemState == NOTFOUND_ID)
                 {
-                    if (APP_WarningHandler(ID_NOT_FOUND) == MAIN_MENU_BUTTON_PRESSED)
-                    {
+                    if (APP_WarningHandler(ID_NOT_FOUND) == MAIN_MENU_BUTTON_PRESSED){
                         /* Go back to the main menu to choose new enrollment */
                         g_SystemState = INITIAL_STATE;
-                    }
-                    else if (APP_WarningHandler(ID_NOT_FOUND) == GOBACK_BUTTON_PRESSED)
-                    {
-                        /* Go back to the Enter ID */
-                        g_SystemState = CONFIRM_ATTENDANCE_ENTER_ID;
-                    }
+					}
                 }
             }
             break; /* End of confirm attendance case */
-
+/***************************************************************************************************************************************************
+ *															New Enrollment Case																	   * 
+ ***************************************************************************************************************************************************/
         case NEW_ENROLLMENT_SET_NEW_ID:
             EmpID = APP_GetID();
+			/*If the user pressed the Go back Button We go to the initial state*/
             if (EmpID == GOBACK)
             {
                 g_SystemState = INITIAL_STATE;
             }
+			/*If the user entered the Id, then we check if it is present*/
             else
             {
                 g_SystemState = APP_CheckIDPresence(EmpID);
+			/*For a new enrollment, the ID must not be present in Data base*/
                 if (g_SystemState == NOTFOUND_ID)
                 {
                     /* If the ID is out of range, display a warning on the LCD */
@@ -150,13 +144,14 @@ int main(void)
                             /* Go back to the main menu to choose new enrollment */
                             g_SystemState = INITIAL_STATE;
                         }
-                    }
+                    } 
+					/*IF the ID is in range, we go for saving Embloyee Finger Print*/
                     else
                     {
                         /* Prompt for finger scan */
                         APP_PutFingerToScan();
-                        _delay_ms(4000);
                         FingerPS_AuraLedConfig();
+                        _delay_ms(4000);
                         /* Save the new fingerprint in memory */
                         FingerPS_SetNewFingerPrint((u16)EmpID);
                         /* Write the new employee ID to EEPROM */
@@ -172,11 +167,6 @@ int main(void)
                     {
                         /* Go back to the main menu to choose new enrollment */
                         g_SystemState = INITIAL_STATE;
-                    }
-                    else if (APP_WarningHandler(ALREADY_TAKEN_ID) == GOBACK_BUTTON_PRESSED)
-                    {
-                        /* Go back to set new ID */
-                        g_SystemState = NEW_ENROLLMENT_SET_NEW_ID;
                     }
                 }
             }

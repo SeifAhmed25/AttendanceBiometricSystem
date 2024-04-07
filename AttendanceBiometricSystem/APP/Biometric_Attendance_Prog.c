@@ -297,11 +297,6 @@ u8 APP_WarningHandler(APP_Warnings warningType){
 	case ID_NOT_FOUND:
 		H_Lcd_Void_LCDWriteString((u8*) "ID NOT FOUND");
 	break;
-	case FINGERPRINT_NOT_FOUND:
-		H_Lcd_Void_LCDWriteString((u8*) "FINGERPRINT NOTFOUND"); 
-		H_Lcd_Void_LCDGoTo(2,0); 
-		H_Lcd_Void_LCDWriteString((u8*) "PLEASE TRY AGAIN"); 
-	break;
 	}
 	H_Lcd_Void_LCDGoTo(3,0);
 	H_Lcd_Void_LCDWriteString((u8*) "C : Main Menu");

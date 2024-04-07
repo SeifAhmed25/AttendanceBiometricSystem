@@ -7,10 +7,9 @@
 
 #ifndef FINGERPRINT_INTERFACE_H_
 #define FINGERPRINT_INTERFACE_H_
-#include "F_CPU_Interface.h"
+
 #include "FingerPrint_Config.h"
-#include "UART_Interface.h" 
-#include "LCD_Interface.h"
+#include "UART_Interface.h"
 extern u8 AckPack [12] ;
 void FingerP_send(u8,u16);
 void FingerPS_handShake(void);

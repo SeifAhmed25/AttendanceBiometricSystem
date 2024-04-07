@@ -304,7 +304,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1488
+.text           0x00000000     0x142c
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -440,135 +440,135 @@ END GROUP
                 0x000005b2       0x40 HAL/FingerPrint/FingerPrint.o
                 0x000005b2                FingerPS_strTemplate
  .text.FingerPS_LoadCharFile
-                0x000005f2       0x68 HAL/FingerPrint/FingerPrint.o
+                0x000005f2       0x6c HAL/FingerPrint/FingerPrint.o
                 0x000005f2                FingerPS_LoadCharFile
  .text.FingerPS_match
-                0x0000065a       0x4a HAL/FingerPrint/FingerPrint.o
-                0x0000065a                FingerPS_match
+                0x0000065e       0x4a HAL/FingerPrint/FingerPrint.o
+                0x0000065e                FingerPS_match
  .text.StoreAckBytes
-                0x000006a4       0x20 HAL/FingerPrint/FingerPrint.o
-                0x000006a4                StoreAckBytes
+                0x000006a8       0x20 HAL/FingerPrint/FingerPrint.o
+                0x000006a8                StoreAckBytes
  .text.FingerPS_CheckAck
-                0x000006c4       0x14 HAL/FingerPrint/FingerPrint.o
-                0x000006c4                FingerPS_CheckAck
+                0x000006c8       0x14 HAL/FingerPrint/FingerPrint.o
+                0x000006c8                FingerPS_CheckAck
  .text.FingerPS_SetNewFingerPrint
-                0x000006d8       0xc4 HAL/FingerPrint/FingerPrint.o
-                0x000006d8                FingerPS_SetNewFingerPrint
+                0x000006dc       0xc4 HAL/FingerPrint/FingerPrint.o
+                0x000006dc                FingerPS_SetNewFingerPrint
  .text.FingerPS_CheckOneToOneMatch
-                0x0000079c       0xaa HAL/FingerPrint/FingerPrint.o
-                0x0000079c                FingerPS_CheckOneToOneMatch
+                0x000007a0       0x8c HAL/FingerPrint/FingerPrint.o
+                0x000007a0                FingerPS_CheckOneToOneMatch
  .text.H_KeyPad_Void_KeyPadInit
-                0x00000846       0x62 HAL/KeyPad/Keypad_Prog.o
-                0x00000846                H_KeyPad_Void_KeyPadInit
+                0x0000082c       0x62 HAL/KeyPad/Keypad_Prog.o
+                0x0000082c                H_KeyPad_Void_KeyPadInit
  .text.H_KeyPad_U8_KeyPadRead
-                0x000008a8      0x11c HAL/KeyPad/Keypad_Prog.o
-                0x000008a8                H_KeyPad_U8_KeyPadRead
+                0x0000088e      0x11c HAL/KeyPad/Keypad_Prog.o
+                0x0000088e                H_KeyPad_U8_KeyPadRead
  .text.H_Lcd_Void_LCDWriteCharacter
-                0x000009c4       0xc0 HAL/LCD/LCD_Prog.o
-                0x000009c4                H_Lcd_Void_LCDWriteCharacter
+                0x000009aa       0xc0 HAL/LCD/LCD_Prog.o
+                0x000009aa                H_Lcd_Void_LCDWriteCharacter
  .text.H_Lcd_Void_LCDWriteCommand
-                0x00000a84       0xc0 HAL/LCD/LCD_Prog.o
-                0x00000a84                H_Lcd_Void_LCDWriteCommand
+                0x00000a6a       0xc0 HAL/LCD/LCD_Prog.o
+                0x00000a6a                H_Lcd_Void_LCDWriteCommand
  .text.H_Lcd_Void_LCDInit
-                0x00000b44       0x56 HAL/LCD/LCD_Prog.o
-                0x00000b44                H_Lcd_Void_LCDInit
+                0x00000b2a       0x56 HAL/LCD/LCD_Prog.o
+                0x00000b2a                H_Lcd_Void_LCDInit
  .text.H_Lcd_Void_LCDWriteString
-                0x00000b9a       0x26 HAL/LCD/LCD_Prog.o
-                0x00000b9a                H_Lcd_Void_LCDWriteString
+                0x00000b80       0x26 HAL/LCD/LCD_Prog.o
+                0x00000b80                H_Lcd_Void_LCDWriteString
  .text.H_Lcd_Void_LCDClear
-                0x00000bc0        0x8 HAL/LCD/LCD_Prog.o
-                0x00000bc0                H_Lcd_Void_LCDClear
+                0x00000ba6        0x8 HAL/LCD/LCD_Prog.o
+                0x00000ba6                H_Lcd_Void_LCDClear
  .text.H_Lcd_Void_LCDWriteNumber
-                0x00000bc8       0xbe HAL/LCD/LCD_Prog.o
-                0x00000bc8                H_Lcd_Void_LCDWriteNumber
+                0x00000bae       0xbe HAL/LCD/LCD_Prog.o
+                0x00000bae                H_Lcd_Void_LCDWriteNumber
  .text.H_Lcd_Void_LCDGoTo
-                0x00000c86       0x3e HAL/LCD/LCD_Prog.o
-                0x00000c86                H_Lcd_Void_LCDGoTo
+                0x00000c6c       0x3e HAL/LCD/LCD_Prog.o
+                0x00000c6c                H_Lcd_Void_LCDGoTo
  .text.H_LED_Void_LedInit
-                0x00000cc4       0x3e HAL/LED/LED_Prog.o
-                0x00000cc4                H_LED_Void_LedInit
+                0x00000caa       0x3e HAL/LED/LED_Prog.o
+                0x00000caa                H_LED_Void_LedInit
  .text.H_LED_Void_LedOn
-                0x00000d02       0x3e HAL/LED/LED_Prog.o
-                0x00000d02                H_LED_Void_LedOn
+                0x00000ce8       0x3e HAL/LED/LED_Prog.o
+                0x00000ce8                H_LED_Void_LedOn
  .text.H_LED_Void_LedOff
-                0x00000d40       0x3e HAL/LED/LED_Prog.o
-                0x00000d40                H_LED_Void_LedOff
+                0x00000d26       0x3e HAL/LED/LED_Prog.o
+                0x00000d26                H_LED_Void_LedOff
  .text.Relay_ON
-                0x00000d7e        0x8 HAL/Relay/Relay_Prog.o
-                0x00000d7e                Relay_ON
+                0x00000d64        0x8 HAL/Relay/Relay_Prog.o
+                0x00000d64                Relay_ON
  .text.Relay_OFF
-                0x00000d86        0x8 HAL/Relay/Relay_Prog.o
-                0x00000d86                Relay_OFF
+                0x00000d6c        0x8 HAL/Relay/Relay_Prog.o
+                0x00000d6c                Relay_OFF
  .text.RTC_Init
-                0x00000d8e        0x6 HAL/RTC/RTC_Prog.o
-                0x00000d8e                RTC_Init
+                0x00000d74        0x6 HAL/RTC/RTC_Prog.o
+                0x00000d74                RTC_Init
  .text.RTC_Get_Time
-                0x00000d94       0x78 HAL/RTC/RTC_Prog.o
-                0x00000d94                RTC_Get_Time
- .text.main     0x00000e0c      0x200 main.o
-                0x00000e0c                main
+                0x00000d7a       0x78 HAL/RTC/RTC_Prog.o
+                0x00000d7a                RTC_Get_Time
+ .text.main     0x00000df2      0x1be main.o
+                0x00000df2                main
  .text.M_DIO_Void_SetPinDirection
-                0x0000100c      0x112 MCAL/DIO/DIO_Prog.o
-                0x0000100c                M_DIO_Void_SetPinDirection
+                0x00000fb0      0x112 MCAL/DIO/DIO_Prog.o
+                0x00000fb0                M_DIO_Void_SetPinDirection
  .text.M_DIO_Void_SetPinValue
-                0x0000111e      0x112 MCAL/DIO/DIO_Prog.o
-                0x0000111e                M_DIO_Void_SetPinValue
+                0x000010c2      0x112 MCAL/DIO/DIO_Prog.o
+                0x000010c2                M_DIO_Void_SetPinValue
  .text.M_DIO_Void_GetPinValue
-                0x00001230       0x88 MCAL/DIO/DIO_Prog.o
-                0x00001230                M_DIO_Void_GetPinValue
+                0x000011d4       0x88 MCAL/DIO/DIO_Prog.o
+                0x000011d4                M_DIO_Void_GetPinValue
  .text.M_Void_I2C_Init
-                0x000012b8       0x3a MCAL/I2C/I2C_Prog.o
-                0x000012b8                M_Void_I2C_Init
+                0x0000125c       0x3a MCAL/I2C/I2C_Prog.o
+                0x0000125c                M_Void_I2C_Init
  .text.M_U8_I2C_Start
-                0x000012f2       0x16 MCAL/I2C/I2C_Prog.o
-                0x000012f2                M_U8_I2C_Start
+                0x00001296       0x16 MCAL/I2C/I2C_Prog.o
+                0x00001296                M_U8_I2C_Start
  .text.M_U8_I2C_SendSlaveAddressWithWrite
-                0x00001308       0x12 MCAL/I2C/I2C_Prog.o
-                0x00001308                M_U8_I2C_SendSlaveAddressWithWrite
+                0x000012ac       0x12 MCAL/I2C/I2C_Prog.o
+                0x000012ac                M_U8_I2C_SendSlaveAddressWithWrite
  .text.M_U8_I2C_Repeated_Start
-                0x0000131a       0x16 MCAL/I2C/I2C_Prog.o
-                0x0000131a                M_U8_I2C_Repeated_Start
+                0x000012be       0x16 MCAL/I2C/I2C_Prog.o
+                0x000012be                M_U8_I2C_Repeated_Start
  .text.M_U8_I2C_SendSlaveAddressWithRead
-                0x00001330       0x12 MCAL/I2C/I2C_Prog.o
-                0x00001330                M_U8_I2C_SendSlaveAddressWithRead
+                0x000012d4       0x12 MCAL/I2C/I2C_Prog.o
+                0x000012d4                M_U8_I2C_SendSlaveAddressWithRead
  .text.M_U8_I2C_Write
-                0x00001342       0x12 MCAL/I2C/I2C_Prog.o
-                0x00001342                M_U8_I2C_Write
+                0x000012e6       0x12 MCAL/I2C/I2C_Prog.o
+                0x000012e6                M_U8_I2C_Write
  .text.M_U8_I2C_ReadWithAck
-                0x00001354        0xe MCAL/I2C/I2C_Prog.o
-                0x00001354                M_U8_I2C_ReadWithAck
+                0x000012f8        0xe MCAL/I2C/I2C_Prog.o
+                0x000012f8                M_U8_I2C_ReadWithAck
  .text.M_U8_I2C_ReadWithNack
-                0x00001362        0xe MCAL/I2C/I2C_Prog.o
-                0x00001362                M_U8_I2C_ReadWithNack
+                0x00001306        0xe MCAL/I2C/I2C_Prog.o
+                0x00001306                M_U8_I2C_ReadWithNack
  .text.M_Void_I2C_STOP
-                0x00001370        0xc MCAL/I2C/I2C_Prog.o
-                0x00001370                M_Void_I2C_STOP
+                0x00001314        0xc MCAL/I2C/I2C_Prog.o
+                0x00001314                M_Void_I2C_STOP
  .text.UART_Init
-                0x0000137c       0x20 MCAL/UART/UART.o
-                0x0000137c                UART_Init
+                0x00001320       0x20 MCAL/UART/UART.o
+                0x00001320                UART_Init
  .text.UART_sendByte
-                0x0000139c        0xc MCAL/UART/UART.o
-                0x0000139c                UART_sendByte
+                0x00001340        0xc MCAL/UART/UART.o
+                0x00001340                UART_sendByte
  .text.UART_receiveByteAsynchCallBack
-                0x000013a8        0xa MCAL/UART/UART.o
-                0x000013a8                UART_receiveByteAsynchCallBack
+                0x0000134c        0xa MCAL/UART/UART.o
+                0x0000134c                UART_receiveByteAsynchCallBack
  .text.__vector_13
-                0x000013b2       0x50 MCAL/UART/UART.o
-                0x000013b2                __vector_13
+                0x00001356       0x50 MCAL/UART/UART.o
+                0x00001356                __vector_13
  .text.libgcc.div
-                0x00001402       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
-                0x00001402                __udivmodsi4
+                0x000013a6       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+                0x000013a6                __udivmodsi4
  .text.libgcc.div
-                0x00001446       0x2e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
-                0x00001446                __divmodsi4
+                0x000013ea       0x2e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
+                0x000013ea                __divmodsi4
  .text.libgcc.div
-                0x00001474       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
-                0x00001474                __negsi2
-                0x00001484                . = ALIGN (0x2)
+                0x00001418       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
+                0x00001418                __negsi2
+                0x00001428                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001484        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00001484                _exit
-                0x00001484                exit
+ .fini9         0x00001428        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00001428                _exit
+                0x00001428                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -587,11 +587,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001484        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001428        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001488                _etext = .
+                0x0000142c                _etext = .
 
-.data           0x00800060      0x148 load address 0x00001488
+.data           0x00800060      0x148 load address 0x0000142c
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -606,17 +606,17 @@ END GROUP
  .rodata.str1.1
                 0x00800093      0x115 APP/Biometric_Attendance_Prog.o
  .rodata.str1.1
-                0x008001a8       0x2f main.o
+                0x008001a8       0x1e main.o
  *(.gnu.linkonce.r*)
-                0x008001d8                . = ALIGN (0x2)
-                0x008001d8                _edata = .
-                0x008001d8                PROVIDE (__data_end, .)
+                0x008001c6                . = ALIGN (0x2)
+                0x008001c6                _edata = .
+                0x008001c6                PROVIDE (__data_end, .)
 
 .bss            0x008001a8       0x11
                 0x008001a8                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.i.1843    0x008001a8        0x1 HAL/FingerPrint/FingerPrint.o
+ .bss.i.1815    0x008001a8        0x1 HAL/FingerPrint/FingerPrint.o
  .bss.AckPack   0x008001a9        0xc HAL/FingerPrint/FingerPrint.o
                 0x008001a9                AckPack
  .bss.is_Finger_Match
@@ -629,8 +629,8 @@ END GROUP
                 0x008001b7                ptr_func
  *(COMMON)
                 0x008001b9                PROVIDE (__bss_end, .)
-                0x00001488                __data_load_start = LOADADDR (.data)
-                0x000015d0                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000142c                __data_load_start = LOADADDR (.data)
+                0x00001574                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x008001b9        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -742,53 +742,53 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x42ab
+.debug_info     0x00000000     0x41a3
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_info    0x000004e6      0xa2d APP/Biometric_Attendance_Prog.o
  .debug_info    0x00000f13      0x1f8 HAL/EEPROM/EEPROM_Prog.o
- .debug_info    0x0000110b      0xf0a HAL/FingerPrint/FingerPrint.o
- .debug_info    0x00002015      0x37d HAL/KeyPad/Keypad_Prog.o
- .debug_info    0x00002392      0x846 HAL/LCD/LCD_Prog.o
- .debug_info    0x00002bd8      0x4c1 HAL/LED/LED_Prog.o
- .debug_info    0x00003099      0x165 HAL/Relay/Relay_Prog.o
- .debug_info    0x000031fe      0x454 HAL/RTC/RTC_Prog.o
- .debug_info    0x00003652      0x686 main.o
- .debug_info    0x00003cd8      0x201 MCAL/DIO/DIO_Prog.o
- .debug_info    0x00003ed9      0x1f7 MCAL/I2C/I2C_Prog.o
- .debug_info    0x000040d0      0x1db MCAL/UART/UART.o
+ .debug_info    0x0000110b      0xe92 HAL/FingerPrint/FingerPrint.o
+ .debug_info    0x00001f9d      0x37d HAL/KeyPad/Keypad_Prog.o
+ .debug_info    0x0000231a      0x846 HAL/LCD/LCD_Prog.o
+ .debug_info    0x00002b60      0x4c1 HAL/LED/LED_Prog.o
+ .debug_info    0x00003021      0x165 HAL/Relay/Relay_Prog.o
+ .debug_info    0x00003186      0x454 HAL/RTC/RTC_Prog.o
+ .debug_info    0x000035da      0x5f6 main.o
+ .debug_info    0x00003bd0      0x201 MCAL/DIO/DIO_Prog.o
+ .debug_info    0x00003dd1      0x1f7 MCAL/I2C/I2C_Prog.o
+ .debug_info    0x00003fc8      0x1db MCAL/UART/UART.o
 
-.debug_abbrev   0x00000000     0x131e
+.debug_abbrev   0x00000000     0x132d
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_abbrev  0x000004a3      0x23e APP/Biometric_Attendance_Prog.o
  .debug_abbrev  0x000006e1       0xb8 HAL/EEPROM/EEPROM_Prog.o
- .debug_abbrev  0x00000799      0x1dd HAL/FingerPrint/FingerPrint.o
- .debug_abbrev  0x00000976      0x14a HAL/KeyPad/Keypad_Prog.o
- .debug_abbrev  0x00000ac0      0x16b HAL/LCD/LCD_Prog.o
- .debug_abbrev  0x00000c2b      0x10d HAL/LED/LED_Prog.o
- .debug_abbrev  0x00000d38       0xa7 HAL/Relay/Relay_Prog.o
- .debug_abbrev  0x00000ddf      0x118 HAL/RTC/RTC_Prog.o
- .debug_abbrev  0x00000ef7      0x180 main.o
- .debug_abbrev  0x00001077       0xb8 MCAL/DIO/DIO_Prog.o
- .debug_abbrev  0x0000112f       0xb4 MCAL/I2C/I2C_Prog.o
- .debug_abbrev  0x000011e3      0x13b MCAL/UART/UART.o
+ .debug_abbrev  0x00000799      0x1ec HAL/FingerPrint/FingerPrint.o
+ .debug_abbrev  0x00000985      0x14a HAL/KeyPad/Keypad_Prog.o
+ .debug_abbrev  0x00000acf      0x16b HAL/LCD/LCD_Prog.o
+ .debug_abbrev  0x00000c3a      0x10d HAL/LED/LED_Prog.o
+ .debug_abbrev  0x00000d47       0xa7 HAL/Relay/Relay_Prog.o
+ .debug_abbrev  0x00000dee      0x118 HAL/RTC/RTC_Prog.o
+ .debug_abbrev  0x00000f06      0x180 main.o
+ .debug_abbrev  0x00001086       0xb8 MCAL/DIO/DIO_Prog.o
+ .debug_abbrev  0x0000113e       0xb4 MCAL/I2C/I2C_Prog.o
+ .debug_abbrev  0x000011f2      0x13b MCAL/UART/UART.o
 
-.debug_line     0x00000000     0x233e
+.debug_line     0x00000000     0x22c6
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_line    0x00000116      0x573 APP/Biometric_Attendance_Prog.o
  .debug_line    0x00000689      0x10b HAL/EEPROM/EEPROM_Prog.o
- .debug_line    0x00000794      0x685 HAL/FingerPrint/FingerPrint.o
- .debug_line    0x00000e19      0x263 HAL/KeyPad/Keypad_Prog.o
- .debug_line    0x0000107c      0x39e HAL/LCD/LCD_Prog.o
- .debug_line    0x0000141a      0x287 HAL/LED/LED_Prog.o
- .debug_line    0x000016a1       0xe3 HAL/Relay/Relay_Prog.o
- .debug_line    0x00001784      0x1fc HAL/RTC/RTC_Prog.o
- .debug_line    0x00001980      0x433 main.o
- .debug_line    0x00001db3      0x1f0 MCAL/DIO/DIO_Prog.o
- .debug_line    0x00001fa3      0x1fe MCAL/I2C/I2C_Prog.o
- .debug_line    0x000021a1      0x19d MCAL/UART/UART.o
+ .debug_line    0x00000794      0x649 HAL/FingerPrint/FingerPrint.o
+ .debug_line    0x00000ddd      0x263 HAL/KeyPad/Keypad_Prog.o
+ .debug_line    0x00001040      0x39e HAL/LCD/LCD_Prog.o
+ .debug_line    0x000013de      0x287 HAL/LED/LED_Prog.o
+ .debug_line    0x00001665       0xe3 HAL/Relay/Relay_Prog.o
+ .debug_line    0x00001748      0x1fc HAL/RTC/RTC_Prog.o
+ .debug_line    0x00001944      0x3f7 main.o
+ .debug_line    0x00001d3b      0x1f0 MCAL/DIO/DIO_Prog.o
+ .debug_line    0x00001f2b      0x1fe MCAL/I2C/I2C_Prog.o
+ .debug_line    0x00002129      0x19d MCAL/UART/UART.o
 
 .debug_frame    0x00000000      0x720
  *(.debug_frame)
@@ -805,7 +805,7 @@ END GROUP
  .debug_frame   0x000005b0       0xa4 MCAL/I2C/I2C_Prog.o
  .debug_frame   0x00000654       0xcc MCAL/UART/UART.o
 
-.debug_str      0x00000000      0xf40
+.debug_str      0x00000000      0xf28
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_str     0x00000196      0x5d0 APP/Biometric_Attendance_Prog.o
@@ -813,7 +813,7 @@ END GROUP
  .debug_str     0x00000766       0xc2 HAL/EEPROM/EEPROM_Prog.o
                                 0x26a (size before relaxing)
  .debug_str     0x00000828      0x23a HAL/FingerPrint/FingerPrint.o
-                                0x442 (size before relaxing)
+                                0x425 (size before relaxing)
  .debug_str     0x00000a62       0xfa HAL/KeyPad/Keypad_Prog.o
                                 0x2f4 (size before relaxing)
  .debug_str     0x00000b5c       0xc9 HAL/LCD/LCD_Prog.o
@@ -824,29 +824,29 @@ END GROUP
                                 0x1ee (size before relaxing)
  .debug_str     0x00000cc0       0xc5 HAL/RTC/RTC_Prog.o
                                 0x32f (size before relaxing)
- .debug_str     0x00000d85       0x78 main.o
-                                0x5e7 (size before relaxing)
- .debug_str     0x00000dfd       0x6b MCAL/DIO/DIO_Prog.o
+ .debug_str     0x00000d85       0x60 main.o
+                                0x5e1 (size before relaxing)
+ .debug_str     0x00000de5       0x6b MCAL/DIO/DIO_Prog.o
                                 0x252 (size before relaxing)
- .debug_str     0x00000e68       0x42 MCAL/I2C/I2C_Prog.o
+ .debug_str     0x00000e50       0x42 MCAL/I2C/I2C_Prog.o
                                 0x2a3 (size before relaxing)
- .debug_str     0x00000eaa       0x96 MCAL/UART/UART.o
+ .debug_str     0x00000e92       0x96 MCAL/UART/UART.o
                                 0x263 (size before relaxing)
 
-.debug_loc      0x00000000     0x1d69
+.debug_loc      0x00000000     0x1cae
  *(.debug_loc)
  .debug_loc     0x00000000      0x372 APP/Biometric_Attendance_Prog.o
  .debug_loc     0x00000372      0x146 HAL/EEPROM/EEPROM_Prog.o
- .debug_loc     0x000004b8      0x52c HAL/FingerPrint/FingerPrint.o
- .debug_loc     0x000009e4      0x1a4 HAL/KeyPad/Keypad_Prog.o
- .debug_loc     0x00000b88      0x4dc HAL/LCD/LCD_Prog.o
- .debug_loc     0x00001064      0x33c HAL/LED/LED_Prog.o
- .debug_loc     0x000013a0       0x90 HAL/Relay/Relay_Prog.o
- .debug_loc     0x00001430      0x268 HAL/RTC/RTC_Prog.o
- .debug_loc     0x00001698      0x1ea main.o
- .debug_loc     0x00001882      0x27a MCAL/DIO/DIO_Prog.o
- .debug_loc     0x00001afc       0xf0 MCAL/I2C/I2C_Prog.o
- .debug_loc     0x00001bec      0x17d MCAL/UART/UART.o
+ .debug_loc     0x000004b8      0x511 HAL/FingerPrint/FingerPrint.o
+ .debug_loc     0x000009c9      0x1a4 HAL/KeyPad/Keypad_Prog.o
+ .debug_loc     0x00000b6d      0x4dc HAL/LCD/LCD_Prog.o
+ .debug_loc     0x00001049      0x33c HAL/LED/LED_Prog.o
+ .debug_loc     0x00001385       0x90 HAL/Relay/Relay_Prog.o
+ .debug_loc     0x00001415      0x268 HAL/RTC/RTC_Prog.o
+ .debug_loc     0x0000167d      0x14a main.o
+ .debug_loc     0x000017c7      0x27a MCAL/DIO/DIO_Prog.o
+ .debug_loc     0x00001a41       0xf0 MCAL/I2C/I2C_Prog.o
+ .debug_loc     0x00001b31      0x17d MCAL/UART/UART.o
 
 .debug_macinfo
  *(.debug_macinfo)

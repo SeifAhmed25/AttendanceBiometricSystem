@@ -1,6 +1,7 @@
 HAL/FingerPrint/FingerPrint.d HAL/FingerPrint/FingerPrint.o: \
  ../HAL/FingerPrint/FingerPrint.c \
  ../HAL/FingerPrint/FingerPrint_Interface.h \
+ ../HAL/FingerPrint/FingerPrint_Config.h ../LIB/STD.h \
  ../MCAL/F_CPU/F_CPU_Interface.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -8,7 +9,6 @@ HAL/FingerPrint/FingerPrint.d HAL/FingerPrint/FingerPrint.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../HAL/FingerPrint/FingerPrint_Config.h ../LIB/STD.h \
  ../MCAL/UART/UART_Interface.h ../LIB/BitMath.h \
  ../MCAL/UART/UART_Config.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
@@ -19,13 +19,13 @@ HAL/FingerPrint/FingerPrint.d HAL/FingerPrint/FingerPrint.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\common.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- ../HAL/LCD/LCD_Interface.h ../HAL/LCD/../../LIB/STD.h \
- ../HAL/LCD/../../MCAL/DIO/DIO_Interface.h \
- ../HAL/LCD/../../MCAL/DIO/../../LIB/STD.h \
- ../HAL/LCD/../../MCAL/DIO/../../LIB/BitMath.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h
 
 ../HAL/FingerPrint/FingerPrint_Interface.h:
+
+../HAL/FingerPrint/FingerPrint_Config.h:
+
+../LIB/STD.h:
 
 ../MCAL/F_CPU/F_CPU_Interface.h:
 
@@ -40,10 +40,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
-
-../HAL/FingerPrint/FingerPrint_Config.h:
-
-../LIB/STD.h:
 
 ../MCAL/UART/UART_Interface.h:
 
@@ -68,13 +64,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
-
-../HAL/LCD/LCD_Interface.h:
-
-../HAL/LCD/../../LIB/STD.h:
-
-../HAL/LCD/../../MCAL/DIO/DIO_Interface.h:
-
-../HAL/LCD/../../MCAL/DIO/../../LIB/STD.h:
-
-../HAL/LCD/../../MCAL/DIO/../../LIB/BitMath.h:
